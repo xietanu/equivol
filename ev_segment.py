@@ -15,7 +15,7 @@ def ev_segment(
     smoothing_degree: int = 30,
     report=False,
 ):
-    """Creates an equivolumetric segmentation of a histological masks.
+    """Creates an equivolumetric layering segmentation of a histological masks.
 
     Args:
         mask (np.ndarray): Histological mask as a 2D numpy array.
@@ -26,14 +26,14 @@ def ev_segment(
             E.g. for cortical layers, 0 would be background, 1 is the grey matter, 2 is the white matter.
         layer_thicknesses (list[float] | np.ndarray): Expected (volumetric) thickness of each layer.
             Unit is unimportant as long as they are consistent. Layers should be listed in descending order.
-        scale (float, optional): Scaling factor calculat ing contours. Defaults to 1.
+        scale (float, optional): Scaling factor calculating contours. Defaults to 1.
             A higher scale usually leads to better results but is also slower.
         smoothing_degree (int, optional): Smoothing degree for the final contours. Defaults to 30.
         report (bool, optional): If True, prints messages regarding progress on intermediate steps. Defaults to False.
     Returns:
         np.ndarray: Segmented equivolumetric masks.
             0 indicates area 'above' the segmented area.
-            1-n indicates the equivolumetric layers.
+            1-n indicates the n equivolumetric layers.
             n+1 indicates area 'below' the area to be segmented.
             n+2 indicates area not segmented.
     """
